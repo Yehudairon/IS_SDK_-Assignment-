@@ -13,6 +13,7 @@ import com.ironsource.mediationsdk.sdk.InterstitialListener;
 
 public class MainActivity extends AppCompatActivity implements InterstitialListener {
 
+    // Show and Load Buttons
     private Button mInterstitialLoadButton;
     private Button mInterstitialShowButton;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements InterstitialListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         IntegrationHelper.validateIntegration(this);
+
         mInterstitialLoadButton = (Button) findViewById(R.id.btnLoad);
         mInterstitialLoadButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements InterstitialListe
                 IronSource.loadInterstitial();
             }
         });
+
         mInterstitialShowButton = (Button) findViewById(R.id.btnShow);
         mInterstitialShowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,15 +42,17 @@ public class MainActivity extends AppCompatActivity implements InterstitialListe
                 }
             }
         });
+
         mInterstitialShowButton.setEnabled(false);
         IronSource.setInterstitialListener(this);
         IronSource.init(this, "85460dcd");
-
     }
+
     protected void onResume() {
         super.onResume();
         IronSource.onResume(this);
     }
+
     protected void onPause() {
         super.onPause();
         IronSource.onPause(this);
@@ -66,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements InterstitialListe
 
     @Override
     public void onInterstitialAdOpened() {
+
 
     }
 
